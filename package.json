@@ -4,7 +4,6 @@
   "homepage": "https://bonginkosi19.github.io/Espihno-Restaurant-Menu",
   "description": "Espinho Restaurant & Bar - Digital Menu",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -35,4 +34,3 @@
     ]
   }
 }
-
