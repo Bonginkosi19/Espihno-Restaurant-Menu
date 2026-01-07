@@ -1,7 +1,6 @@
 {
   "name": "espinho-menu",
   "version": "1.0.0",
-  "description": "Espinho Restaurant & Bar - Digital Menu",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
@@ -33,3 +32,4 @@
     ]
   }
 }
+```
