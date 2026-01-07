@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Fish, Utensils, Beef, Wine, GlassWater, Coffee } from 'lucide-react';
+import { Fish, Utensils, Beef, Wine, GlassWater, Coffee, ShoppingBag, Calendar, X, Phone } from 'lucide-react';
 
 const EspinhoMenu = () => {
   const [activeCategory, setActiveCategory] = useState('seafood');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showReservation, setShowReservation] = useState(false);
+  const [showOrderCart, setShowOrderCart] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [reservationData, setReservationData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    time: '',
+    guests: '',
+    requests: ''
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -132,8 +144,249 @@ const EspinhoMenu = () => {
 
   const CategoryIcon = categories[activeCategory].icon;
 
+  const addToCart = (item) => {
+    const existingItem = cart.find(i => i.name === item.name);
+    if (existingItem) {
+      setCart(cart.map(i => i.name === item.name ? {...i, quantity: i.quantity + 1} : i));
+    } else {
+      setCart([...cart, {...item, quantity: 1}]);
+    }
+    setShowOrderCart(true);
+  };
+
+  const removeFromCart = (itemName) => {
+    setCart(cart.filter(i => i.name !== itemName));
+  };
+
+  const updateQuantity = (itemName, newQuantity) => {
+    if (newQuantity === 0) {
+      removeFromCart(itemName);
+    } else {
+      setCart(cart.map(i => i.name === itemName ? {...i, quantity: newQuantity} : i));
+    }
+  };
+
+  const getCartTotal = () => {
+    return cart.reduce((total, item) => {
+      const price = parseFloat(item.price.replace('E', '').replace(',', ''));
+      return total + (price * item.quantity);
+    }, 0);
+  };
+
+  const handleOrderNow = () => {
+    const orderText = cart.map(item => `${item.quantity}x ${item.name} - ${item.price}`).join('%0A');
+    const total = getCartTotal();
+    const message = `Hello Espinho! I would like to place an order:%0A%0A${orderText}%0A%0ATotal: E${total.toFixed(2)}%0A%0APlease confirm availability and delivery details.`;
+    window.open(`https://wa.me/26876796708?text=${message}`, '_blank');
+  };
+
+  const handleReservation = (e) => {
+    e.preventDefault();
+    const message = `New Reservation Request:%0A%0AName: ${reservationData.name}%0APhone: ${reservationData.phone}%0AEmail: ${reservationData.email}%0ADate: ${reservationData.date}%0ATime: ${reservationData.time}%0AGuests: ${reservationData.guests}%0ASpecial Requests: ${reservationData.requests || 'None'}`;
+    window.open(`https://wa.me/26876796708?text=${message}`, '_blank');
+    setShowReservation(false);
+    setReservationData({ name: '', email: '', phone: '', date: '', time: '', guests: '', requests: '' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white">
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+        <button
+          onClick={() => setShowReservation(true)}
+          className="bg-gradient-to-r from-amber-600 to-amber-500 text-black p-4 rounded-full shadow-2xl shadow-amber-500/30 hover:scale-110 transition-all duration-300 group"
+          title="Reserve a Table"
+        >
+          <Calendar size={24} className="group-hover:rotate-12 transition-transform" />
+        </button>
+        <button
+          onClick={() => setShowOrderCart(true)}
+          className="bg-gradient-to-r from-green-600 to-green-500 text-white p-4 rounded-full shadow-2xl shadow-green-500/30 hover:scale-110 transition-all duration-300 group relative"
+          title="View Cart"
+        >
+          <ShoppingBag size={24} className="group-hover:scale-110 transition-transform" />
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">
+              {cart.length}
+            </span>
+          )}
+        </button>
+      </div>
+
+      {/* Reservation Modal */}
+      {showReservation && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-zinc-900 to-black border border-amber-400/30 rounded-2xl max-w-md w-full p-8 relative">
+            <button
+              onClick={() => setShowReservation(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="text-center mb-8">
+              <Calendar size={48} className="text-amber-400 mx-auto mb-4" />
+              <h2 className="text-3xl font-bold text-amber-400 mb-2">Reserve Your Table</h2>
+              <p className="text-gray-400 text-sm">Experience elegance at Espinho</p>
+            </div>
+
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={reservationData.name}
+                onChange={(e) => setReservationData({...reservationData, name: e.target.value})}
+                className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+                required
+              />
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                value={reservationData.phone}
+                onChange={(e) => setReservationData({...reservationData, phone: e.target.value})}
+                className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email Address"
+                value={reservationData.email}
+                onChange={(e) => setReservationData({...reservationData, email: e.target.value})}
+                className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+              />
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="date"
+                  value={reservationData.date}
+                  onChange={(e) => setReservationData({...reservationData, date: e.target.value})}
+                  className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+                  required
+                />
+                <input
+                  type="time"
+                  value={reservationData.time}
+                  onChange={(e) => setReservationData({...reservationData, time: e.target.value})}
+                  className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+                  required
+                />
+              </div>
+              <select
+                value={reservationData.guests}
+                onChange={(e) => setReservationData({...reservationData, guests: e.target.value})}
+                className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors text-white"
+                required
+              >
+                <option value="">Number of Guests</option>
+                <option value="1-2">1-2 guests</option>
+                <option value="3-4">3-4 guests</option>
+                <option value="5-6">5-6 guests</option>
+                <option value="7+">7+ guests</option>
+              </select>
+              <textarea
+                placeholder="Special Requests (Optional)"
+                value={reservationData.requests}
+                onChange={(e) => setReservationData({...reservationData, requests: e.target.value})}
+                rows="3"
+                className="w-full bg-black/50 border border-zinc-700 px-4 py-3 rounded-lg focus:border-amber-400 focus:outline-none transition-colors resize-none text-white"
+              />
+              <button
+                onClick={handleReservation}
+                className="w-full bg-gradient-to-r from-amber-600 to-amber-500 text-black px-8 py-4 rounded-lg text-sm uppercase tracking-wider font-bold hover:scale-105 transition-all flex items-center justify-center gap-2"
+              >
+                <Phone size={18} />
+                Confirm via WhatsApp
+              </button>
+              <p className="text-gray-500 text-xs text-center">
+                Or call us directly at <a href="tel:76796708" className="text-amber-400 hover:underline">76796708</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Order Cart Modal */}
+      {showOrderCart && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-zinc-900 to-black border border-green-400/30 rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-8 relative">
+            <button
+              onClick={() => setShowOrderCart(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+            
+            <div className="text-center mb-8">
+              <ShoppingBag size={48} className="text-green-400 mx-auto mb-4" />
+              <h2 className="text-3xl font-bold text-green-400 mb-2">Your Order</h2>
+              <p className="text-gray-400 text-sm">Review and place your order</p>
+            </div>
+
+            {cart.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-gray-400 mb-4">Your cart is empty</p>
+                <button
+                  onClick={() => setShowOrderCart(false)}
+                  className="text-amber-400 hover:text-amber-300 text-sm uppercase tracking-wider"
+                >
+                  Start ordering
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="space-y-4 mb-6">
+                  {cart.map((item, idx) => (
+                    <div key={idx} className="bg-black/50 border border-zinc-700 rounded-lg p-4 flex justify-between items-center">
+                      <div className="flex-1">
+                        <h3 className="text-white font-semibold">{item.name}</h3>
+                        <p className="text-amber-400 text-sm">{item.price}</p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => updateQuantity(item.name, item.quantity - 1)}
+                          className="bg-zinc-800 hover:bg-zinc-700 text-white w-8 h-8 rounded flex items-center justify-center"
+                        >
+                          -
+                        </button>
+                        <span className="text-white font-bold w-8 text-center">{item.quantity}</span>
+                        <button
+                          onClick={() => updateQuantity(item.name, item.quantity + 1)}
+                          className="bg-zinc-800 hover:bg-zinc-700 text-white w-8 h-8 rounded flex items-center justify-center"
+                        >
+                          +
+                        </button>
+                        <button
+                          onClick={() => removeFromCart(item.name)}
+                          className="text-red-400 hover:text-red-300 ml-2"
+                        >
+                          <X size={20} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="border-t border-zinc-700 pt-4 mb-6">
+                  <div className="flex justify-between items-center text-xl font-bold">
+                    <span className="text-white">Total:</span>
+                    <span className="text-amber-400">E{getCartTotal().toFixed(2)}</span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleOrderNow}
+                  className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white px-8 py-4 rounded-lg text-sm uppercase tracking-wider font-bold hover:scale-105 transition-all flex items-center justify-center gap-2"
+                >
+                  <Phone size={18} />
+                  Place Order via WhatsApp
+                </button>
+                <p className="text-gray-500 text-xs text-center mt-4">
+                  Your order will be sent to our WhatsApp for confirmation
+                </p>
+              </>
+            )}
+          </div>
+        </div>
+      )}
       <div className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/95 backdrop-blur-xl shadow-2xl shadow-amber-500/10 py-4' : 'bg-black/40 backdrop-blur-md py-6'}`}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
@@ -190,6 +443,13 @@ const EspinhoMenu = () => {
                   <p className="text-sm text-gray-500 font-light">By Bottle: <span className="text-amber-400 font-semibold">{item.bottlePrice}</span></p>
                 </div>
               )}
+              <button
+                onClick={() => addToCart(item)}
+                className="mt-4 w-full bg-gradient-to-r from-green-600/20 to-green-500/20 hover:from-green-600 hover:to-green-500 border border-green-500/30 hover:border-green-500 text-green-400 hover:text-white px-6 py-3 rounded-lg text-sm uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2"
+              >
+                <ShoppingBag size={16} />
+                Add to Order
+              </button>
               <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-amber-400/0 group-hover:border-amber-400/30 transition-all duration-500 rounded-tr-xl"></div>
             </div>
           ))}
@@ -211,9 +471,9 @@ const EspinhoMenu = () => {
             <div className="text-center md:text-right">
               <h3 className="text-lg font-semibold text-amber-400 mb-4 tracking-wide">Contact</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                <a href="tel:23434033" className="hover:text-amber-400 transition-colors">78760543</a><br/>
+                <a href="tel:76796708" className="hover:text-amber-400 transition-colors">76796708</a><br/>
                 <a href="mailto:info.espinho@swazi.net" className="hover:text-amber-400 transition-colors">info.espinho@swazi.net</a><br/>
-                <a href="https://www.instagram.com/espinho_restaurant_bar/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">@espinho_restaurant</a>
+                <a href="https://www.instagram.com/espinho_restaurant/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">@espinho_restaurant</a>
               </p>
             </div>
           </div>
