@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, Wine, Utensils, Coffee } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Fish, Utensils, Beef, Wine, GlassWater, Coffee } from 'lucide-react';
 
 const EspinhoMenu = () => {
   const [activeCategory, setActiveCategory] = useState('seafood');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const categories = {
     seafood: {
       title: 'Seafood & Shellfish',
-      icon: '🦞',
+      icon: Fish,
+      gradient: 'from-blue-900/20 to-cyan-900/20',
       items: [
         {
           name: 'Italian Salmon Ressoto',
@@ -81,8 +91,9 @@ const EspinhoMenu = () => {
       ]
     },
     pasta: {
-      title: 'Pastas & Curry Dishes',
-      icon: '🍝',
+      title: 'Pastas & Curry',
+      icon: Utensils,
+      gradient: 'from-orange-900/20 to-red-900/20',
       items: [
         {
           name: 'Itallian Vegetable Stack',
@@ -133,7 +144,8 @@ const EspinhoMenu = () => {
     },
     meat: {
       title: 'Meat & Poultry',
-      icon: '🥩',
+      icon: Beef,
+      gradient: 'from-red-900/20 to-orange-900/20',
       items: [
         {
           name: 'Traditional Rump 300g',
@@ -172,7 +184,8 @@ const EspinhoMenu = () => {
         {
           name: 'Nikasha Signature',
           price: 'E350',
-          description: '200g prime cut beef fillet steak, topped with garlic lemon and butter, south coast lobster tail, maraschino cherries, cauliflower puree. Served with seasonal vegetables and potato mash'
+          description: '200g prime cut beef fillet steak, topped with garlic lemon and butter, south coast lobster tail, maraschino cherries, cauliflower puree. Served with seasonal vegetables and potato mash',
+          featured: true
         },
         {
           name: 'African Fillet',
@@ -237,8 +250,9 @@ const EspinhoMenu = () => {
       ]
     },
     wines: {
-      title: 'Wines by Bottle',
-      icon: '🍷',
+      title: 'Fine Wines',
+      icon: Wine,
+      gradient: 'from-purple-900/20 to-pink-900/20',
       items: [
         {
           name: 'De Grendel Cape of Good Hope',
@@ -304,8 +318,15 @@ const EspinhoMenu = () => {
     },
     cocktails: {
       title: 'Signature Cocktails',
-      icon: '🍹',
+      icon: GlassWater,
+      gradient: 'from-cyan-900/20 to-blue-900/20',
       items: [
+        {
+          name: 'Espinho Signature',
+          price: 'E165',
+          description: 'Gin, rose syrup, sour mix, camomile tea, graham beck bliss nectar',
+          featured: true
+        },
         {
           name: 'Pinacolata',
           price: 'E104',
@@ -334,7 +355,7 @@ const EspinhoMenu = () => {
         {
           name: 'Ginger Apple Sour',
           price: 'E115',
-          description: 'Irish whiskey, lemon juice, lemon juice, Apple juice, syrup bitters'
+          description: 'Irish whiskey, lemon juice, Apple juice, syrup bitters'
         },
         {
           name: 'Siteki High Road',
@@ -377,11 +398,6 @@ const EspinhoMenu = () => {
           description: 'Hennessy vs, cherry syrup, lime, cherries, orange zest'
         },
         {
-          name: 'Espinho Signature',
-          price: 'E165',
-          description: 'Gin, rose syrup, sour mix, camomile tea, graham beck bliss nectar'
-        },
-        {
           name: 'Blue Lagoon',
           price: 'E135',
           description: 'Vodka, Sourmix, Kemonade, blue Curacao'
@@ -390,22 +406,25 @@ const EspinhoMenu = () => {
     },
     whiskey: {
       title: 'Premium Whiskey',
-      icon: '🥃',
+      icon: Coffee,
+      gradient: 'from-amber-900/20 to-yellow-900/20',
       items: [
         {
-          name: 'Johnnie Walker Gold Lebl Reserve',
+          name: 'Johnnie Walker Gold Label Reserve',
           category: 'Premium Selection',
-          price: 'E240'
+          price: 'E240',
+          featured: true
+        },
+        {
+          name: 'Johnnie Walker King George',
+          category: 'Premium Selection',
+          price: 'E500',
+          featured: true
         },
         {
           name: 'Johnnie Walker Double Black',
           category: 'Premium Selection',
           price: 'E60'
-        },
-        {
-          name: 'Johnnie Walker King George',
-          category: 'Premium Selection',
-          price: 'E500'
         },
         {
           name: 'Johnnie Walker Black',
@@ -470,96 +489,143 @@ const EspinhoMenu = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-amber-950 text-white">
-      <div className="bg-black/60 backdrop-blur-lg sticky top-0 z-50 border-b border-amber-400/20">
-        <div className="max-w-7xl mx-auto px-6 py-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-3 tracking-tight">
-            <span className="text-amber-400">Espinho</span>
-          </h1>
-          <p className="text-amber-400/80 text-sm uppercase tracking-widest mb-2">Restaurant & Bar</p>
-          <p className="text-gray-400 text-sm">Siteki, Eswatini • Modern Contemporary Italian Dining</p>
-        </div>
-      </div>
+  const CategoryIcon = categories[activeCategory].icon;
 
-      <div className="sticky top-[140px] md:top-[160px] z-40 bg-black/80 backdrop-blur-md border-b border-amber-400/20">
-        <div className="max-w-7xl mx-auto px-4 py-4 overflow-x-auto">
-          <div className="flex gap-2 md:gap-4 min-w-max md:min-w-0 md:justify-center">
-            {Object.entries(categories).map(([key, cat]) => (
-              <button
-                key={key}
-                onClick={() => setActiveCategory(key)}
-                className={`px-6 py-3 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
-                  activeCategory === key
-                    ? 'bg-amber-400 text-black shadow-lg shadow-amber-400/30 scale-105'
-                    : 'bg-zinc-800/50 text-gray-300 hover:bg-zinc-700'
-                }`}
-              >
-                <span className="mr-2">{cat.icon}</span>
-                {cat.title}
-              </button>
-            ))}
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-black to-zinc-900 text-white">
+      {/* Elegant Header with Logo */}
+      <div className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-black/95 backdrop-blur-xl shadow-2xl shadow-amber-500/10 py-4' : 'bg-black/40 backdrop-blur-md py-6'}`}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <img 
+              src="/logo.png" 
+              alt="Espinho" 
+              className={`mx-auto mb-3 object-contain transition-all duration-500 ${isScrolled ? 'h-12' : 'h-16'}`}
+            />
+            <p className="text-amber-400/90 text-xs uppercase tracking-[0.3em] font-light">Modern Contemporary Italian Dining</p>
+            <p className="text-amber-400/60 text-xs mt-1">Siteki, Eswatini</p>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            {categories[activeCategory].icon} <span className="text-amber-400">{categories[activeCategory].title}</span>
+      {/* Spacer */}
+      <div className="h-32"></div>
+
+      {/* Elegant Category Navigation */}
+      <div className="sticky top-28 z-40 bg-gradient-to-b from-black via-black/98 to-transparent backdrop-blur-xl border-b border-amber-400/10">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+            {Object.entries(categories).map(([key, cat]) => {
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveCategory(key)}
+                  className={`flex items-center gap-3 px-6 py-3.5 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                    activeCategory === key
+                      ? 'bg-gradient-to-r from-amber-600 to-amber-500 text-black shadow-lg shadow-amber-500/30 scale-105'
+                      : 'bg-zinc-900/50 text-gray-300 hover:bg-zinc-800/70 hover:text-amber-400 border border-zinc-800/50'
+                  }`}
+                >
+                  <Icon size={18} strokeWidth={2.5} />
+                  <span className="tracking-wide">{cat.title}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Menu Content */}
+      <div className="max-w-7xl mx-auto px-6 py-16">
+        {/* Section Header */}
+        <div className="mb-16 text-center">
+          <div className="inline-flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent to-amber-400/50"></div>
+            <CategoryIcon size={36} className="text-amber-400" strokeWidth={1.5} />
+            <div className="h-px w-16 bg-gradient-to-l from-transparent to-amber-400/50"></div>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-4 text-amber-400 tracking-tight">
+            {categories[activeCategory].title}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto"></div>
+          <p className="text-gray-400 text-sm uppercase tracking-widest">Crafted with Excellence</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Menu Grid */}
+        <div className="grid md:grid-cols-2 gap-8">
           {categories[activeCategory].items.map((item, idx) => (
             <div 
               key={idx}
-              className="bg-gradient-to-br from-zinc-900/90 to-zinc-800/50 backdrop-blur-sm rounded-lg p-6 border border-amber-400/10 hover:border-amber-400/30 transition-all hover:shadow-xl hover:shadow-amber-400/10 group"
+              className={`group relative bg-gradient-to-br ${categories[activeCategory].gradient} backdrop-blur-sm rounded-xl p-8 border transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl ${
+                item.featured 
+                  ? 'border-amber-400/40 shadow-lg shadow-amber-500/10' 
+                  : 'border-zinc-800/50 hover:border-amber-400/30'
+              }`}
             >
-              <div className="flex justify-between items-start mb-3">
-                <h3 className="text-xl font-bold text-amber-400 group-hover:text-amber-300 transition-colors pr-4">
+              {item.featured && (
+                <div className="absolute -top-3 left-6 px-4 py-1 bg-gradient-to-r from-amber-600 to-amber-500 text-black text-xs font-bold uppercase tracking-wider rounded-full">
+                  Signature
+                </div>
+              )}
+              
+              <div className="flex justify-between items-start mb-4 gap-4">
+                <h3 className="text-xl font-serif font-semibold text-amber-400 group-hover:text-amber-300 transition-colors leading-tight">
                   {item.name}
                 </h3>
-                <span className="text-2xl font-bold text-amber-400 whitespace-nowrap">{item.price}</span>
+                <span className="text-2xl font-bold text-amber-400 whitespace-nowrap flex-shrink-0 font-serif">
+                  {item.price}
+                </span>
               </div>
               
               {item.category && (
-                <p className="text-xs uppercase tracking-wider text-amber-400/60 mb-2">{item.category}</p>
+                <p className="text-xs uppercase tracking-widest text-amber-400/50 mb-3 font-light">{item.category}</p>
               )}
               
               {item.description && (
-                <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                <p className="text-gray-400 text-sm leading-relaxed font-light">{item.description}</p>
               )}
               
               {item.bottlePrice && (
-                <div className="mt-3 pt-3 border-t border-zinc-700">
-                  <p className="text-sm text-gray-500">By Bottle: <span className="text-amber-400 font-semibold">{item.bottlePrice}</span></p>
+                <div className="mt-4 pt-4 border-t border-zinc-700/50">
+                  <p className="text-sm text-gray-500 font-light">
+                    By Bottle: <span className="text-amber-400 font-semibold font-serif">{item.bottlePrice}</span>
+                  </p>
                 </div>
               )}
+
+              {/* Elegant corner accent */}
+              <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-amber-400/0 group-hover:border-amber-400/30 transition-all duration-500 rounded-tr-xl"></div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-black/60 border-t border-amber-400/20 py-12 px-6 mt-16">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold text-amber-400 mb-2">Contact Us</h3>
-            <p className="text-gray-400 mb-2">📍 Plot 136/180, Flame Tree Park, Siteki, Eswatini</p>
-            <p className="text-gray-400 mb-2">📞 <a href="tel:+26878760543" className="hover:text-amber-400 transition-colors">76796708</a></p>
-            <p className="text-gray-400 mb-2">✉️ <a href="mailto:info.espinho@swazi.net" className="hover:text-amber-400 transition-colors">info.espinho@swazi.net</a></p>
-            <p className="text-gray-400">📸 <a href="https://www.instagram.com/espinho_restaurant_bar/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">@espinho_restaurant</a></p>
-          </div>
-          
-          <div className="border-t border-zinc-800 pt-6 mt-6">
-            <p className="text-gray-500 text-sm mb-2">Daily: 08:00 AM - 10:00 PM</p>
-            <p className="text-gray-600 text-xs">© 2025 Espinho Restaurant & Bar. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+      {/* Premium Footer */}
+      <footer className="relative mt-24 border-t border-amber-400/10">
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-zinc-950 to-transparent"></div>
+        <div className="relative max-w-7xl mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-3 gap-12 mb-12">
+            {/* Location */}
+            <div className="text-center md:text-left">
+              <h3 className="text-lg font-serif font-semibold text-amber-400 mb-4 tracking-wide">Visit Us</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Plot 136/180, Flame Tree Park<br/>
+                Behind Lubombo Mall<br/>
+                Siteki, Eswatini
+              </p>
+            </div>
 
-export default EspinhoMenu;
+            {/* Hours */}
+            <div className="text-center">
+              <h3 className="text-lg font-serif font-semibold text-amber-400 mb-4 tracking-wide">Hours</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Daily: 08:00 AM - 10:00 PM<br/>
+              </p>
+            </div>
+
+            {/* Contact */}
+            <div className="text-center md:text-right">
+              <h3 className="text-lg font-serif font-semibold text-amber-400 mb-4 tracking-wide">Contact</h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                <a href="tel:+268 78760543" className="hover:text
+               <a href="Email: info.espihno@swazinet.net" className="hover:text
