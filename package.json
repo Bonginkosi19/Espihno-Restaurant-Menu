@@ -1,7 +1,6 @@
 {
   "name": "espinho-menu",
   "version": "1.0.0",
-  "homepage": "https://bonginkosi19.github.io/Espihno-Restaurant-Menu",
   "description": "Espinho Restaurant & Bar - Digital Menu",
   "private": true,
   "dependencies": {
