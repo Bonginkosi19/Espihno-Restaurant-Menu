@@ -151,7 +151,7 @@ const EspinhoMenu = () => {
     } else {
       setCart([...cart, {...item, quantity: 1}]);
     }
-    setShowOrderCart(true);
+    // Don't automatically open cart - let user keep browsing
   };
 
   const removeFromCart = (itemName) => {
@@ -215,11 +215,12 @@ const EspinhoMenu = () => {
 
       {/* Reservation Modal */}
       {showReservation && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-zinc-900 to-black border border-amber-400/30 rounded-2xl max-w-md w-full p-8 relative">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowReservation(false)}>
+          <div className="bg-gradient-to-br from-zinc-900 to-black border border-amber-400/30 rounded-2xl max-w-md w-full p-8 relative" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowReservation(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-gray-400 hover:text-amber-400 transition-colors z-10 bg-black/50 rounded-full p-2"
+              title="Close and return to menu"
             >
               <X size={24} />
             </button>
@@ -306,11 +307,12 @@ const EspinhoMenu = () => {
 
       {/* Order Cart Modal */}
       {showOrderCart && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gradient-to-br from-zinc-900 to-black border border-green-400/30 rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-8 relative">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowOrderCart(false)}>
+          <div className="bg-gradient-to-br from-zinc-900 to-black border border-green-400/30 rounded-2xl max-w-lg w-full max-h-[80vh] overflow-y-auto p-8 relative" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowOrderCart(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-gray-400 hover:text-green-400 transition-colors z-10 bg-black/50 rounded-full p-2"
+              title="Close and continue browsing"
             >
               <X size={24} />
             </button>
@@ -445,10 +447,10 @@ const EspinhoMenu = () => {
               )}
               <button
                 onClick={() => addToCart(item)}
-                className="mt-4 w-full bg-gradient-to-r from-green-600/20 to-green-500/20 hover:from-green-600 hover:to-green-500 border border-green-500/30 hover:border-green-500 text-green-400 hover:text-white px-6 py-3 rounded-lg text-sm uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2"
+                className="mt-4 w-full bg-gradient-to-r from-green-600/20 to-green-500/20 hover:from-green-600 hover:to-green-500 border border-green-500/30 hover:border-green-500 text-green-400 hover:text-white px-6 py-3 rounded-lg text-sm uppercase tracking-wider font-semibold transition-all flex items-center justify-center gap-2 group"
               >
-                <ShoppingBag size={16} />
-                Add to Order
+                <ShoppingBag size={16} className="group-hover:scale-110 transition-transform" />
+                <span>{cart.find(c => c.name === item.name) ? `Added (${cart.find(c => c.name === item.name).quantity})` : 'Add to Order'}</span>
               </button>
               <div className="absolute top-0 right-0 w-20 h-20 border-t border-r border-amber-400/0 group-hover:border-amber-400/30 transition-all duration-500 rounded-tr-xl"></div>
             </div>
