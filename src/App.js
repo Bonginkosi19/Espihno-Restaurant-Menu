@@ -416,7 +416,7 @@ export default EspinhoWebsite; key={item} onClick={() => scrollToSection(item)} 
         </div>
       </section>
 
-      {/* Modals */}
+      {/* Reservation Modal */}
       {showReservation && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={() => setShowReservation(false)}>
           <div className="bg-gradient-to-br from-zinc-900 to-black border border-amber-400/30 rounded-2xl max-w-md w-full p-8 relative" onClick={(e) => e.stopPropagation()}>
