@@ -135,8 +135,11 @@ const EspinhoMenu = () => {
         { name: 'Johnnie Walker King George', category: 'Premium Selection', price: 'E500', featured: true },
         { name: 'Macallan 18 yrs', category: 'By Tots', price: 'E470', bottlePrice: 'E14100' },
         { name: 'Macallan 12yrs', category: 'By Tots', price: 'E150', bottlePrice: 'E4550' },
+        { name: 'Macallan 15yrs', catergory: 'By Tots', price: '250', bottleprice: 'E7400' },
         { name: 'Glenfiddich 21yrs', category: 'By Tots', price: 'E420', bottlePrice: 'E12400' },
+        { name: 'Glenfiddich 18yrs', category: 'By Tots',price: 'E115', bottleprice: 'E3450' },
         { name: 'Glenfiddich 18yrs', category: 'By Tots', price: 'E115', bottlePrice: 'E3450' },
+        { name: 'Glenmorangie 18yrs', catergory: 'By Tots', price: "E110', bottlepice: 'E3300' },
         { name: 'Chivas Regal 18yrs', category: 'By Tots', price: 'E125', bottlePrice: 'E3750' }
       ]
     }
