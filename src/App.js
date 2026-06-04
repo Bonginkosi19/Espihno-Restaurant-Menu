@@ -181,6 +181,8 @@ const EspinhoMenu = () => {
       const haystack = `${item.name} ${item.description || ''} ${item.category || ''}`.toLowerCase();
       return haystack.includes(q);
     });
+    // categories is a stable in-component constant; only the active key matters
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, activeCategory]);
 
   const cartItemCount = cart.reduce((n, i) => n + i.quantity, 0);
