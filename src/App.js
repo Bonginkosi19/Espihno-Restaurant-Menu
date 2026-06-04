@@ -133,13 +133,12 @@ const EspinhoMenu = () => {
       items: [
         { name: 'Johnnie Walker Gold Label Reserve', category: 'Premium Selection', price: 'E240', featured: true },
         { name: 'Johnnie Walker King George', category: 'Premium Selection', price: 'E500', featured: true },
-        { name: 'Macallan 18 yrs', category: 'By Tots', price: 'E470', bottlePrice: 'E14100' },
+        { name: 'Macallan 18yrs', category: 'By Tots', price: 'E470', bottlePrice: 'E14100' },
+        { name: 'Macallan 15yrs', category: 'By Tots', price: 'E250', bottlePrice: 'E7400' },
         { name: 'Macallan 12yrs', category: 'By Tots', price: 'E150', bottlePrice: 'E4550' },
-        { name: 'Macallan 15yrs', catergory: 'By Tots', price: 'E250', bottleprice: 'E7400' },
         { name: 'Glenfiddich 21yrs', category: 'By Tots', price: 'E420', bottlePrice: 'E12400' },
-        { name: 'Glenfiddich 18yrs', category: 'By Tots',price: 'E115', bottleprice: 'E3450' },
         { name: 'Glenfiddich 18yrs', category: 'By Tots', price: 'E115', bottlePrice: 'E3450' },
-        { name: 'Glenmorangie 18yrs', catergory: 'By Tots', price: 'E110', bottleprice: 'E3300'},
+        { name: 'Glenmorangie 18yrs', category: 'By Tots', price: 'E110', bottlePrice: 'E3300' },
         { name: 'Chivas Regal 18yrs', category: 'By Tots', price: 'E125', bottlePrice: 'E3750' }
       ]
     }
@@ -478,7 +477,7 @@ const EspinhoMenu = () => {
               <p className="text-gray-400 text-sm leading-relaxed">
                 <a href="tel:76796708" className="hover:text-amber-400 transition-colors">76796708</a><br/>
                 <a href="mailto:info.espinho@swazi.net" className="hover:text-amber-400 transition-colors">info.espinho@swazi.net</a><br/>
-                <a href="https://www.instagram.com/espinho_restaurant/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">@espinho_restaurant</a>
+                <a href="https://www.instagram.com/espinho_restaurant_bar/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">@espinho_restaurant_bar</a>
               </p>
             </div>
           </div>
