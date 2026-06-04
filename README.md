@@ -12,11 +12,7 @@ Modern, responsive digital menu for Espinho Restaurant & Bar in Siteki, Eswatini
 
 ## 🚀 Live Demo
 
-[View Live Menu](https://your-username.github.io/espinho-menu)
-
-## 📸 Screenshots
-
-![Espinho Menu](https://via.placeholder.com/800x400?text=Add+Screenshot+Here)
+[View Live Menu](https://bonginkosi19.github.io/Espihno-Restaurant-Menu/)
 
 ## 🛠️ Technologies Used
 
@@ -28,10 +24,10 @@ Modern, responsive digital menu for Espinho Restaurant & Bar in Siteki, Eswatini
 ## 📦 Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/espinho-menu.git
+git clone https://github.com/bonginkosi19/Espihno-Restaurant-Menu.git
 
 # Navigate to project directory
-cd espinho-menu
+cd Espihno-Restaurant-Menu
 
 # Install dependencies
 npm install
@@ -67,7 +63,7 @@ The menu is organized into 6 main categories:
 
 - Monday: 08:00 AM - 10:00 PM
 - Tuesday: 08:00 AM - 10:00 PM
-- -Wednesday: 08:00 AM - 10:00 PM
+- Wednesday: 08:00 AM - 10:00 PM
 - Thursday: 09:00 AM - 10:00 PM
 - Friday: 08:00 AM - 10:00 PM
 - Saturday: 09:00 AM - 10:00 PM
