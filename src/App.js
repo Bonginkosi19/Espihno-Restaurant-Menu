@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { Fish, Utensils, Beef, Wine, GlassWater, Coffee, ShoppingBag, Calendar, X, Phone, Search, MapPin, Clock, Instagram, Mail, ArrowUp, ChevronDown } from 'lucide-react';
+import { Fish, Utensils, Beef, Wine, GlassWater, Coffee, ShoppingBag, Calendar, X, Phone, Search, MapPin, Clock, Instagram, Mail, ArrowUp, Star, Users, Briefcase, ChevronRight } from 'lucide-react';
 
 const EspinhoMenu = () => {
   const [activeCategory, setActiveCategory] = useState('seafood');
@@ -186,6 +186,109 @@ const EspinhoMenu = () => {
   }, [searchQuery, activeCategory]);
 
   const cartItemCount = cart.reduce((n, i) => n + i.quantity, 0);
+
+  const heroBg = 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80';
+
+  const todaysSpecial = [
+    {
+      name: 'Nikasha Signature',
+      price: 'E350',
+      blurb: '200g prime fillet, lobster tail, garlic-lemon butter, cauliflower puree.',
+      image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80',
+      rating: 5,
+    },
+    {
+      name: 'Italian Salmon Risotto',
+      price: 'E255',
+      blurb: 'Scottish salmon, saffron-parmesan arborio, tempura prawns.',
+      image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80',
+      rating: 5,
+    },
+    {
+      name: 'Espinho Signature',
+      price: 'E165',
+      blurb: 'Gin, rose syrup, sour mix, camomile, Graham Beck bliss nectar.',
+      image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80',
+      rating: 5,
+    },
+  ];
+
+  const specialtyTabs = [
+    {
+      key: 'seafood',
+      label: 'Seafood',
+      icon: Fish,
+      eyebrow: 'From the Ocean',
+      dish: 'Italian Salmon Risotto',
+      price: 'E255',
+      description:
+        'Pan-fried Scottish salmon with creamed horseradish, arborio rice and white wine, finished with a saffron-parmesan cream sauce and tempura prawns.',
+      image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1100&q=80',
+    },
+    {
+      key: 'meat',
+      label: 'Steak',
+      icon: Beef,
+      eyebrow: 'Aged 21 Days',
+      dish: 'Tomahawk 500g',
+      price: 'E395',
+      description:
+        'Wet-aged beef fore-rib served with truffle potato, asparagus and baby carrots — finished with a port-wine jus.',
+      image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1100&q=80',
+    },
+    {
+      key: 'pasta',
+      label: 'Pasta',
+      icon: Utensils,
+      eyebrow: 'House Made',
+      dish: 'Wild Mushroom Risotto',
+      price: 'E260',
+      description:
+        'Grilled exotic mushrooms, arborio rice and white wine finished with truffle oil, parmesan tuile and basil pesto.',
+      image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1100&q=80',
+    },
+    {
+      key: 'wines',
+      label: 'Wine',
+      icon: Wine,
+      eyebrow: 'Cellar Pick',
+      dish: 'Eagles Nest Sauv Blanc',
+      price: 'E750',
+      description:
+        'A crisp Cape Sauvignon Blanc — bright citrus, gooseberry, a clean mineral finish. Pairs beautifully with shellfish.',
+      image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1100&q=80',
+    },
+    {
+      key: 'cocktails',
+      label: 'Cocktails',
+      icon: GlassWater,
+      eyebrow: 'House Mix',
+      dish: 'Hennessy Autograph',
+      price: 'E210',
+      description:
+        'Hennessy VS shaken with cherry syrup, lime, fresh cherries and orange zest — a smooth pour for a quiet evening.',
+      image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1100&q=80',
+    },
+    {
+      key: 'whiskey',
+      label: 'Whiskey',
+      icon: Coffee,
+      eyebrow: 'Premium Pour',
+      dish: 'Macallan 18yrs',
+      price: 'E470',
+      description:
+        'Single malt, full-bodied and complex — dried fruit, wood smoke, a soft spice finish. Available by the tot or bottle.',
+      image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=1100&q=80',
+    },
+  ];
+
+  const [activeSpecialty, setActiveSpecialty] = useState(specialtyTabs[0].key);
+  const currentSpecialty = specialtyTabs.find((t) => t.key === activeSpecialty) || specialtyTabs[0];
+
+  const handleEventInquiry = (type) => {
+    const message = `Hello Espinho! I'd like to inquire about hosting a ${type} event. Please share availability and packages.`;
+    window.open(`https://wa.me/26876796708?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
   const addToCart = (item) => {
     const existingItem = cart.find(i => i.name === item.name);
@@ -491,40 +594,215 @@ const EspinhoMenu = () => {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-500/[0.04] via-transparent to-transparent pointer-events-none" />
-        <div
+      {/* Hero — image bg, dark overlay, centered serif headline */}
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+        <img
+          src={heroBg}
+          alt=""
           aria-hidden="true"
-          className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-amber-500/10 blur-3xl pointer-events-none"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
         />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <p className="text-amber-400/80 text-xs uppercase tracking-[0.4em] mb-6">Flame Tree Park · Siteki</p>
-          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600 leading-[1.05] mb-6">
-            Espinho
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.7)_75%)]" />
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-28 pb-20">
+          <p className="font-script text-amber-300 text-3xl md:text-4xl mb-4">Best Italian In Town</p>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+            TASTE THE RICH FLAVOR OF<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-300 to-amber-500">
+              ITALIAN COASTAL CUISINE
+            </span>
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light mb-10">
-            Modern contemporary Italian dining — Scottish salmon, wet-aged steaks, fresh Mozambican shellfish, and a curated bar in the heart of Eswatini.
+          <p className="text-gray-300 text-base md:text-lg max-w-xl mx-auto leading-relaxed font-light mb-10">
+            We only use five-star quality for our menu — come and get the richness in every food we serve.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
-            <button
-              onClick={scrollToMenu}
-              className="w-full sm:w-auto bg-gradient-to-r from-amber-600 to-amber-500 text-black px-8 py-4 rounded-full text-sm uppercase tracking-widest font-bold hover:scale-105 transition-all flex items-center justify-center gap-2 shadow-xl shadow-amber-500/20 focus:outline-none focus:ring-2 focus:ring-amber-300"
-            >
-              Explore the Menu
-              <ChevronDown size={18} />
-            </button>
-            <button
-              onClick={() => setShowReservation(true)}
-              className="w-full sm:w-auto border border-amber-400/40 text-amber-400 px-8 py-4 rounded-full text-sm uppercase tracking-widest font-semibold hover:bg-amber-400/10 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-amber-400/60"
-            >
-              <Calendar size={18} />
-              Reserve a Table
-            </button>
+          <button
+            onClick={scrollToMenu}
+            className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-8 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/40 transition-all focus:outline-none focus:ring-2 focus:ring-amber-300"
+          >
+            Go To Menu
+            <span className="w-8 h-px bg-black/60 group-hover:w-12 transition-all" />
+          </button>
+
+          <div className="mt-14 flex flex-wrap justify-center gap-x-8 gap-y-3 text-xs uppercase tracking-[0.3em] text-gray-400">
+            <span className="flex items-center gap-2"><Clock size={14} className="text-amber-400/80" /> Open Daily 08:00 – 22:00</span>
+            <span className="flex items-center gap-2"><MapPin size={14} className="text-amber-400/80" /> Flame Tree Park, Siteki</span>
           </div>
-          <div className="mt-12 flex flex-wrap justify-center gap-6 text-xs uppercase tracking-widest text-gray-500">
-            <span className="flex items-center gap-2"><Clock size={14} className="text-amber-400/70" /> Open Daily 08:00 – 22:00</span>
-            <span className="flex items-center gap-2"><MapPin size={14} className="text-amber-400/70" /> Behind Lubombo Mall</span>
+        </div>
+      </section>
+
+      {/* Today's Special */}
+      <section className="relative py-20 md:py-28 bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <p className="font-script text-amber-300 text-2xl md:text-3xl mb-2">Signature Menu</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Today's Special</h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="h-px w-10 bg-amber-400/40" />
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span className="h-px w-10 bg-amber-400/40" />
+            </div>
+            <p className="text-gray-400 text-sm max-w-md mx-auto">
+              Specials rotate daily — these are our chef's picks for tonight.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {todaysSpecial.map((s) => (
+              <article
+                key={s.name}
+                className="group bg-gradient-to-b from-zinc-900/90 to-black border border-zinc-800/70 hover:border-amber-400/40 rounded-2xl overflow-hidden transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-amber-500/10"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                  <span className="absolute top-4 right-4 bg-black/70 backdrop-blur text-amber-400 text-sm font-bold px-3 py-1.5 rounded-full tabular-nums">
+                    {s.price}
+                  </span>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif text-2xl font-bold text-white mb-2">{s.name}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed mb-4 min-h-[3.5rem]">{s.blurb}</p>
+                  <div className="flex items-center gap-1 mb-5" aria-label={`${s.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star
+                        key={i}
+                        size={16}
+                        className={i < s.rating ? 'text-amber-400 fill-amber-400' : 'text-zinc-700'}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => addToCart({ name: s.name, price: s.price })}
+                    className="w-full inline-flex items-center justify-center gap-2 border border-amber-400/50 text-amber-400 hover:bg-amber-400 hover:text-black px-6 py-3 rounded-full text-xs uppercase tracking-[0.25em] font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/60"
+                  >
+                    Choose Now
+                    <ChevronRight size={14} />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Specialties — tabbed image + text */}
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-black via-zinc-950 to-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="font-script text-amber-300 text-2xl md:text-3xl mb-2">Quality First For You</p>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Our Specialties</h2>
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              Authentic flavours from our kitchen and bar — built on high-quality ingredients.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-12">
+            {specialtyTabs.map((t) => {
+              const Icon = t.icon;
+              const active = activeSpecialty === t.key;
+              return (
+                <button
+                  key={t.key}
+                  onClick={() => setActiveSpecialty(t.key)}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.2em] font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/60 ${
+                    active
+                      ? 'border border-amber-400 text-amber-400 bg-amber-400/10'
+                      : 'border border-zinc-800 text-gray-400 hover:border-amber-400/40 hover:text-amber-400'
+                  }`}
+                >
+                  <Icon size={14} />
+                  {t.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            key={currentSpecialty.key}
+            className="grid md:grid-cols-2 gap-8 md:gap-14 items-center animate-[fadeIn_0.4s_ease-out]"
+          >
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] order-1 md:order-2">
+              <img
+                src={currentSpecialty.image}
+                alt={currentSpecialty.dish}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent" />
+            </div>
+            <div className="order-2 md:order-1">
+              <p className="font-script text-amber-300 text-xl md:text-2xl mb-2">{currentSpecialty.eyebrow}</p>
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-white mb-5">{currentSpecialty.dish}</h3>
+              <p className="text-gray-400 text-base leading-relaxed mb-6">{currentSpecialty.description}</p>
+              <p className="font-serif text-3xl text-amber-400 font-bold mb-8 tabular-nums">{currentSpecialty.price}</p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => addToCart({ name: currentSpecialty.dish, price: currentSpecialty.price })}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:scale-105 hover:shadow-xl hover:shadow-amber-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-amber-300"
+                >
+                  <ShoppingBag size={14} />
+                  Add to Order
+                </button>
+                <button
+                  onClick={() => { setActiveCategory(currentSpecialty.key); setSearchQuery(''); scrollToMenu(); }}
+                  className="inline-flex items-center gap-2 border border-amber-400/40 text-amber-400 hover:bg-amber-400/10 px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.25em] font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-amber-400/60"
+                >
+                  See Full {currentSpecialty.label}
+                  <ChevronRight size={14} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Dining Events */}
+      <section className="relative py-20 md:py-28 bg-black border-y border-zinc-900">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <p className="font-script text-amber-300 text-2xl md:text-3xl mb-2">Choose Your Day</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">Dining Events</h2>
+          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto mb-12">
+            From intimate celebrations to corporate evenings — we'll build the night around you.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-6 md:gap-8">
+            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-amber-400/20 hover:border-amber-400/60 rounded-2xl p-8 transition-all text-left overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-amber-500/10 blur-3xl group-hover:bg-amber-500/20 transition-all" />
+              <Users className="text-amber-400 mb-5 relative" size={32} />
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 relative">Private Events</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 relative">
+                Birthdays, anniversaries, intimate dinners. Custom menus, private seating, dedicated service.
+              </p>
+              <button
+                onClick={() => handleEventInquiry('private')}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-6 py-3 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:scale-105 transition-all relative focus:outline-none focus:ring-2 focus:ring-amber-300"
+              >
+                Enquire Now
+                <ChevronRight size={14} />
+              </button>
+            </div>
+            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-amber-400/20 hover:border-amber-400/60 rounded-2xl p-8 transition-all text-left overflow-hidden">
+              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-amber-500/10 blur-3xl group-hover:bg-amber-500/20 transition-all" />
+              <Briefcase className="text-amber-400 mb-5 relative" size={32} />
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-3 relative">Corporate Events</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 relative">
+                Board dinners, team celebrations, client hosting. Set menus, AV-friendly spaces, full-bar service.
+              </p>
+              <button
+                onClick={() => handleEventInquiry('corporate')}
+                className="inline-flex items-center gap-2 border border-amber-400/50 text-amber-400 hover:bg-amber-400 hover:text-black px-6 py-3 rounded-full text-xs uppercase tracking-[0.25em] font-bold transition-all relative focus:outline-none focus:ring-2 focus:ring-amber-400/60"
+              >
+                Enquire Now
+                <ChevronRight size={14} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
