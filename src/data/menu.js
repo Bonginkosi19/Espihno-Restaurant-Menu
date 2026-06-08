@@ -13,10 +13,16 @@ export const CHEF_IMAGE =
 // public/images/ with these exact names and they'll render automatically.
 // See public/images/README.md for instructions.
 export const INTERIORS = {
-  diningRoom: '/images/dining-room.png',
-  banquette: '/images/banquette.png',
-  tableSetting: '/images/table-setting.png',
-  bar: '/images/bar.png',
+  diningRoom:   '/images/export const INTERIORS = {
+  diningRoom:   '/images/your-filename.jpg',
+  banquette:    '/images/your-filename.jpg',
+  tableSetting: '/images/your-filename.jpg',
+  bar:          '/images/your-filename.jpg',
+};.jpg
+  banquette:    '/images/your-filename.jpg',
+  tableSetting: '/images/your-filename.jpg',
+  bar:          '/images/your-filename.jpg',
+};
 };
 
 // Brand palette pulled from the dining room — dark slatted walls, emerald and
