@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, Clock, Send } from 'lucide-react';
-import { ADDRESS_LINES, HOURS, PHONE, EMAIL, INSTAGRAM, WHATSAPP } from '../data/menu';
+import { ADDRESS_LINES, HOURS, PHONE, EMAIL, INSTAGRAM, WHATSAPP, INTERIORS } from '../data/menu';
 import { useCart } from '../context/CartContext';
+import InteriorImage from '../components/InteriorImage';
 
 export default function Contact() {
   const { openReservation } = useCart();
@@ -17,7 +18,10 @@ export default function Contact() {
   return (
     <>
       <section className="relative pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-to-b from-zinc-950 to-black overflow-hidden">
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 opacity-30">
+          <InteriorImage src={INTERIORS.entrance} alt="" className="w-full h-full" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <p className="font-script text-amber-300 text-3xl md:text-4xl mb-2">Get In Touch</p>
           <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-4">Visit · Call · Write</h1>

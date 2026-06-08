@@ -6,20 +6,30 @@ Drop your original PNG/JPG files here using these exact names:
 - `banquette.png` — sage banquette + emerald/ruby chairs along the wall
 - `table-setting.png` — close-up of brass-trimmed table, oak top, wine glasses
 - `bar.png` — bar area or alternate dining angle
+- `entrance.png` — marble lobby with "Espinho Restaurant & Bar" signage
 
-How to add them:
+## Easiest: upload via GitHub web UI
 
-1. Save your photos with the names above
-2. From your local clone:
-   ```
-   git checkout main
-   git pull
-   cp /path/to/your/photos/*.png public/images/
-   git add public/images/
-   git commit -m "Add Espinho interior photography"
-   git push origin main
-   ```
-3. Vercel auto-deploys — the site picks them up everywhere `INTERIORS.*` is referenced.
+1. Visit https://github.com/Bonginkosi19/Espihno-Restaurant-Menu/tree/main/public/images
+2. Click **Add file → Upload files**
+3. Drag the five PNGs in
+4. Commit message: `Add Espinho interior photography` → **Commit changes**
 
-If you use a different format (e.g. `.jpg`), update the four URLs in
+Vercel auto-deploys the moment you commit.
+
+## Via local clone
+
+```sh
+git checkout main && git pull
+cp /path/to/dining-room.png      public/images/
+cp /path/to/banquette.png        public/images/
+cp /path/to/table-setting.png    public/images/
+cp /path/to/bar.png              public/images/
+cp /path/to/entrance.png         public/images/
+git add public/images/
+git commit -m "Add Espinho interior photography"
+git push origin main
+```
+
+If you use a different format (e.g. `.jpg`), update the five URLs in
 `src/data/menu.js` → `INTERIORS` to match.
