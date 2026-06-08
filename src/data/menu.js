@@ -9,6 +9,30 @@ export const RESTAURANT_INTERIOR =
 export const CHEF_IMAGE =
   'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80';
 
+// Espinho interior photography — replace with /images/* paths once you drop the
+// real restaurant photos into public/images/.
+export const INTERIORS = {
+  diningRoom:
+    'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80',
+  banquette:
+    'https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1600&q=80',
+  tableSetting:
+    'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1600&q=80',
+  bar:
+    'https://images.unsplash.com/photo-1567071875129-f8f902bd61ce?auto=format&fit=crop&w=1600&q=80',
+};
+
+// Brand palette pulled from the dining room — dark slatted walls, emerald and
+// ruby velvet chairs, brass-trimmed oak tabletops.
+export const BRAND_PALETTE = [
+  { name: 'Charcoal Slat', hex: '#16181C', usage: 'Walls, primary surfaces' },
+  { name: 'Espinho Emerald', hex: '#1F4D3A', usage: 'Velvet accents, depth' },
+  { name: 'Velvet Ruby', hex: '#7A1E2B', usage: 'Hero accents, hover states' },
+  { name: 'Brass', hex: '#C8A24C', usage: 'Table trim, dividers' },
+  { name: 'Soft Cream', hex: '#F4EFE6', usage: 'Light sections, contrast' },
+  { name: 'Sage Velvet', hex: '#7E8C73', usage: 'Banquettes, soft tones' },
+];
+
 export const PHONE = '+26876796708';
 export const WHATSAPP = '26876796708';
 export const EMAIL = 'info.espinho@swazi.net';

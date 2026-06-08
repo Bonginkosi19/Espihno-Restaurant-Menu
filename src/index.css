@@ -5,8 +5,19 @@
 }
 
 :root {
-  --color-bg: #000;
-  --color-surface: #18181b;
+  /* Espinho brand tokens — pulled from the actual dining room */
+  --color-bg: #0c0d10;
+  --color-surface: #16181c;
+  --color-charcoal: #16181c;
+  --color-emerald: #1f4d3a;
+  --color-emerald-deep: #143226;
+  --color-ruby: #7a1e2b;
+  --color-ruby-deep: #571320;
+  --color-brass: #c8a24c;
+  --color-brass-bright: #e0bf6a;
+  --color-cream: #f4efe6;
+  --color-cream-dim: #e8e1d3;
+  --color-sage: #7e8c73;
   --color-gold: #fbbf24;
   --color-gold-dim: #d97706;
   --color-text: #fafafa;
