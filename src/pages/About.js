@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Award, Leaf, Heart, ChefHat, ChevronRight } from 'lucide-react';
 import { RESTAURANT_INTERIOR, CHEF_IMAGE, GALLERY_IMAGES, INTERIORS, BRAND_PALETTE } from '../data/menu';
+import InteriorImage from '../components/InteriorImage';
 
 const values = [
   { icon: Award, title: 'Five-Star Quality', body: 'Every plate is built from premium produce, wet-aged meats and fresh-caught seafood.' },
@@ -98,16 +99,16 @@ export default function About() {
 
           <div className="grid grid-cols-12 gap-3 md:gap-5">
             <div className="col-span-12 md:col-span-8 relative aspect-[16/9] rounded-3xl overflow-hidden ring-1 ring-[#16181c]/10">
-              <img src={INTERIORS.diningRoom} alt="Espinho dining room with emerald and ruby velvet chairs" loading="lazy" className="w-full h-full object-cover" />
+              <InteriorImage src={INTERIORS.diningRoom} alt="Espinho dining room with emerald and ruby velvet chairs" className="w-full h-full" />
             </div>
             <div className="col-span-6 md:col-span-4 relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden ring-1 ring-[#16181c]/10">
-              <img src={INTERIORS.tableSetting} alt="Table setting with brass-trimmed oak and wine glasses" loading="lazy" className="w-full h-full object-cover" />
+              <InteriorImage src={INTERIORS.tableSetting} alt="Brass-trimmed oak table with wine glasses" className="w-full h-full" />
             </div>
             <div className="col-span-6 md:col-span-4 relative aspect-square rounded-3xl overflow-hidden ring-1 ring-[#16181c]/10">
-              <img src={INTERIORS.banquette} alt="Sage banquette seating along slatted feature wall" loading="lazy" className="w-full h-full object-cover" />
+              <InteriorImage src={INTERIORS.banquette} alt="Sage banquette and slatted feature wall" className="w-full h-full" />
             </div>
             <div className="col-span-12 md:col-span-8 relative aspect-[16/9] md:aspect-[16/7] rounded-3xl overflow-hidden ring-1 ring-[#16181c]/10">
-              <img src={INTERIORS.bar} alt="Espinho bar area" loading="lazy" className="w-full h-full object-cover" />
+              <InteriorImage src={INTERIORS.bar} alt="Espinho bar area" className="w-full h-full" />
             </div>
           </div>
         </div>

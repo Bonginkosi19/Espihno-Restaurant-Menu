@@ -9,17 +9,14 @@ export const RESTAURANT_INTERIOR =
 export const CHEF_IMAGE =
   'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80';
 
-// Espinho interior photography — replace with /images/* paths once you drop the
-// real restaurant photos into public/images/.
+// Espinho interior photography. Drop the original PNG files into
+// public/images/ with these exact names and they'll render automatically.
+// See public/images/README.md for instructions.
 export const INTERIORS = {
-  diningRoom:
-    'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=80',
-  banquette:
-    'https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1600&q=80',
-  tableSetting:
-    'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1600&q=80',
-  bar:
-    'https://images.unsplash.com/photo-1567071875129-f8f902bd61ce?auto=format&fit=crop&w=1600&q=80',
+  diningRoom: '/images/dining-room.png',
+  banquette: '/images/banquette.png',
+  tableSetting: '/images/table-setting.png',
+  bar: '/images/bar.png',
 };
 
 // Brand palette pulled from the dining room — dark slatted walls, emerald and
