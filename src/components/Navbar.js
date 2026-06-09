@@ -4,7 +4,8 @@ import { Menu as MenuIcon, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
 // Routes whose page bodies start with a cream/light surface — Navbar inverts to keep contrast.
-const LIGHT_ROUTES = ['/menu'];
+// (The /menu page reverted to dark + gold to match the print menu aesthetic.)
+const LIGHT_ROUTES = [];
 
 const links = [
   { to: '/', label: 'Home', end: true },
