@@ -1,35 +1,35 @@
-# Espinho Interior Photos
+# Espinho Photography
 
-Drop your original PNG/JPG files here using these exact names:
+Real Espinho Restaurant & Bar interior and food photography lives here.
+Filenames are semantic and referenced from `src/data/menu.js` and a few pages.
 
-- `dining-room.png` — wide shot of the dining room (slatted wall, banquettes, pendant globes)
-- `banquette.png` — sage banquette + emerald/ruby chairs along the wall
-- `table-setting.png` — close-up of brass-trimmed table, oak top, wine glasses
-- `bar.png` — bar area or alternate dining angle
-- `entrance.png` — marble lobby with "Espinho Restaurant & Bar" signage
+## Interiors
+- `dining-room.jpg` — main dining room (hero)
+- `dining-room-wide.jpg` — alt wide dining room shot
+- `private-corner.jpg` — slatted wall with sage banquette and oval mirrors
+- `banquette.jpg` — sage banquette + emerald/ruby velvet chairs side angle
+- `mirror-wall.jpg` — oval mirror wall, sage banquette, banquette dining
+- `table-velvet.jpg` — table close-up with brass-trimmed oak and velvet chairs
+- `sage-chairs.jpg` — sage green chair detail with sheer curtains
+- `entrance.jpg` — marble lobby with Espinho signage
+- `event-table.jpg` — long event table with floral arrangements
 
-## Easiest: upload via GitHub web UI
+## Food
+- `fillet-redwine.jpg` — pan-grilled fillet medallions with red wine glass
+- `fillet-medallions.jpg` — fillet medallions overhead
+- `pasta-prawn.jpg` — prawn aglio olio with edible flowers
+- `lamb-shank.jpg` — slow-braised lamb shank by Espinho marble
+- `grilled-fish.jpg` — grilled baby kingklip with vegetable straws
+- `prawn-salad.jpg` — prawn salad in black bowl
+- `caesar-salad.jpg` — Cajun chicken Caesar salad
+- `dessert-tartlets.jpg` — crumble tartlets with quenelle
+- `souffle-berries.jpg` — soufflé with fresh strawberries
+- `chocolate-dessert.jpg` — chocolate dessert with nasturtium flower
 
-1. Visit https://github.com/Bonginkosi19/Espihno-Restaurant-Menu/tree/main/public/images
-2. Click **Add file → Upload files**
-3. Drag the five PNGs in
-4. Commit message: `Add Espinho interior photography` → **Commit changes**
+## Drinks
+- `cocktails.jpg` — frozen pina colada, strawberry daiquiri, others
+- `coffee-latte.jpg` — latte art with gold-leaf candle bowl
+- `coffee-marble.jpg` — coffee close-up on marble
+- `cappuccino.jpg` — cappuccino on marble with gold-leaf bowl
 
-Vercel auto-deploys the moment you commit.
-
-## Via local clone
-
-```sh
-git checkout main && git pull
-cp /path/to/dining-room.png      public/images/
-cp /path/to/banquette.png        public/images/
-cp /path/to/table-setting.png    public/images/
-cp /path/to/bar.png              public/images/
-cp /path/to/entrance.png         public/images/
-git add public/images/
-git commit -m "Add Espinho interior photography"
-git push origin main
-```
-
-If you use a different format (e.g. `.jpg`), update the five URLs in
-`src/data/menu.js` → `INTERIORS` to match.
+All images are resized to max 2000px wide, JPEG quality 82, EXIF stripped.

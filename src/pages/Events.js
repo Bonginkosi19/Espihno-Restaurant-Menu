@@ -43,8 +43,8 @@ export default function Events() {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=80"
-              alt="Private dining setup"
+              src="/images/event-table.jpg"
+              alt="Private dining table dressed with white roses and orange blooms"
               className="w-full h-full object-cover"
               loading="lazy"
             />
@@ -97,8 +97,8 @@ export default function Events() {
           </div>
           <div className="relative aspect-[4/5] rounded-2xl overflow-hidden order-1 md:order-2">
             <img
-              src="https://images.unsplash.com/photo-1592861956120-e524fc739696?auto=format&fit=crop&w=1100&q=80"
-              alt="Corporate dinner table"
+              src="/images/mirror-wall.jpg"
+              alt="Corporate dinner table along the slatted feature wall with mirrors"
               className="w-full h-full object-cover"
               loading="lazy"
             />

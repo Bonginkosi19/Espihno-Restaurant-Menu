@@ -1,23 +1,17 @@
 import { Fish, Utensils, Beef, Wine, GlassWater, Coffee, Egg, Salad, Pizza, Flame, Cake, Baby, Beer, Sparkles, Layers, Soup } from 'lucide-react';
 
-export const HERO_BG =
-  'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80';
+// Actual Espinho restaurant photography — stored in public/images/.
+// Resized to 2000px max, JPEG quality 82, EXIF stripped.
+export const HERO_BG = '/images/dining-room.jpg';
+export const RESTAURANT_INTERIOR = '/images/dining-room-wide.jpg';
+export const CHEF_IMAGE = '/images/event-table.jpg';
 
-export const RESTAURANT_INTERIOR =
-  'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80';
-
-export const CHEF_IMAGE =
-  'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80';
-
-// Espinho interior photography. Drop the original PNG files into
-// public/images/ with these exact names and they'll render automatically.
-// See public/images/README.md for instructions.
 export const INTERIORS = {
-  diningRoom: '/images/dining-room.png',
-  banquette: '/images/banquette.png',
-  tableSetting: '/images/table-setting.png',
-  bar: '/images/bar.png',
-  entrance: '/images/entrance.png',
+  diningRoom: '/images/dining-room.jpg',
+  banquette: '/images/private-corner.jpg',
+  tableSetting: '/images/table-velvet.jpg',
+  bar: '/images/banquette.jpg',
+  entrance: '/images/entrance.jpg',
 };
 
 // Brand palette pulled from the dining room — dark slatted walls, emerald and
@@ -46,61 +40,61 @@ export const HOURS = [
 
 export const TODAYS_SPECIAL = [
   {
-    name: 'Nikasha Signature',
-    price: 'E350',
-    blurb: '200g prime fillet, lobster tail, garlic-lemon butter, cauliflower puree.',
-    image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80',
+    name: 'Pan Grilled Fillet',
+    price: 'E365',
+    blurb: 'Black pepper fillet, grilled glazed carrots, tenderstem broccoli, garlic mash, red wine chocolate jus.',
+    image: '/images/fillet-redwine.jpg',
     rating: 5,
   },
   {
-    name: 'Italian Salmon Risotto',
-    price: 'E255',
-    blurb: 'Scottish salmon, saffron-parmesan arborio, tempura prawns.',
-    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80',
+    name: 'Prawn Aglio Olio',
+    price: 'E265',
+    blurb: 'Pan-grilled prawns with garlic, olive oil and fresh herbs over your choice of pasta.',
+    image: '/images/pasta-prawn.jpg',
     rating: 5,
   },
   {
-    name: 'Espinho Signature',
-    price: 'E165',
-    blurb: 'Gin, rose syrup, sour mix, camomile, Graham Beck bliss nectar.',
-    image: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80',
+    name: 'Pina Colada',
+    price: 'E104',
+    blurb: 'Bacardi, pina coconut syrup, pineapple, cream and pineapple juice.',
+    image: '/images/cocktails.jpg',
     rating: 5,
   },
 ];
 
 export const SPECIALTY_TABS = [
   {
-    key: 'seafood',
-    label: 'Seafood',
+    key: 'sea',
+    label: 'From the Sea',
     icon: Fish,
     eyebrow: 'From the Ocean',
-    dish: 'Espinho Seafood Platter for Two',
-    price: 'E795',
+    dish: 'Grilled Baby Kingklip',
+    price: 'E365',
     description:
-      'Lobster tail, 2 langoustines, 4 king prawns, 4 queen prawns, and 180g grilled calamari, served with grilled vegetables and your choice of rice or gourmet chips.',
-    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1100&q=80',
+      'Served with vegetable stir-fry and finished with beetroot puree and lemon wedges — clean, bright, perfectly cooked.',
+    image: '/images/grilled-fish.jpg',
   },
   {
     key: 'fire',
     label: 'From the Fire',
     icon: Beef,
     eyebrow: 'Aged 21 Days',
-    dish: 'Chalmer Tomahawk 800g',
-    price: 'E645',
+    dish: 'Pan Grilled Fillet',
+    price: 'E365',
     description:
-      'Kalahari-matured for 21 days, cooked over an open flame. Served with homemade basting, seasonal vegetables, and your choice of starch.',
-    image: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1100&q=80',
+      'Black pepper fillet medallions with grilled glazed carrots, tenderstem broccoli, garlic mash and red wine chocolate jus.',
+    image: '/images/fillet-redwine.jpg',
   },
   {
     key: 'pasta',
     label: 'Pasta',
     icon: Utensils,
     eyebrow: 'House Made',
-    dish: 'Oxtail Ragu',
-    price: 'E235',
+    dish: 'Prawn Aglio Olio',
+    price: 'E265',
     description:
-      'Slow-braised deboned oxtail with chilli napolitana, parmesan shavings, and asparagus. Penne, tagliatelle, or linguine.',
-    image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=1100&q=80',
+      'Pan-grilled prawns tossed with garlic, olive oil and fresh herbs over your choice of penne, tagliatelle or linguine.',
+    image: '/images/pasta-prawn.jpg',
   },
   {
     key: 'wines',
@@ -111,29 +105,29 @@ export const SPECIALTY_TABS = [
     price: 'E750',
     description:
       'A crisp Cape Sauvignon Blanc — bright citrus, gooseberry, a clean mineral finish. Pairs beautifully with shellfish.',
-    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1100&q=80',
+    image: '/images/fillet-redwine.jpg',
   },
   {
     key: 'cocktails',
     label: 'Cocktails',
     icon: GlassWater,
     eyebrow: 'House Mix',
-    dish: 'Espinho Signature',
-    price: 'E165',
+    dish: 'Pina Colada',
+    price: 'E104',
     description:
-      'Gin, rose syrup, sour mix, camomile tea, Graham Beck bliss nectar. The cocktail that bears our name.',
-    image: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1100&q=80',
+      'Bacardi, pina coconut syrup, pineapple, cream and pineapple juice. Frozen, perfectly balanced.',
+    image: '/images/cocktails.jpg',
   },
   {
-    key: 'spirits',
-    label: 'Whiskey',
-    icon: Coffee,
-    eyebrow: 'Premium Pour',
-    dish: 'Macallan 18yrs',
-    price: 'E470',
+    key: 'dessert',
+    label: 'Dessert',
+    icon: Cake,
+    eyebrow: 'Sweet Finish',
+    dish: 'Crème Brûlée',
+    price: 'E105',
     description:
-      'Single malt, full-bodied and complex — dried fruit, wood smoke, a soft spice finish. Available by the tot or bottle.',
-    image: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=1100&q=80',
+      'Raspberry, berry compote and sugar work — pastry cream finished with a torched amber crust.',
+    image: '/images/souffle-berries.jpg',
   },
 ];
 
@@ -450,14 +444,18 @@ export const CATEGORIES = {
   },
 };
 export const GALLERY_IMAGES = [
-  { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80', alt: 'Restaurant interior' },
-  { src: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80', alt: 'Plated salmon dish' },
-  { src: 'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80', alt: 'Tomahawk steak' },
-  { src: 'https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=80', alt: 'Signature cocktail' },
-  { src: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80', alt: 'Salmon plate' },
-  { src: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80', alt: 'Wine selection' },
-  { src: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=80', alt: 'Mushroom risotto' },
-  { src: 'https://images.unsplash.com/photo-1527281400683-1aae777175f8?auto=format&fit=crop&w=900&q=80', alt: 'Whiskey pour' },
+  { src: '/images/fillet-redwine.jpg', alt: 'Pan-grilled fillet medallions with red wine' },
+  { src: '/images/pasta-prawn.jpg', alt: 'Prawn aglio olio pasta plated with edible flowers' },
+  { src: '/images/lamb-shank.jpg', alt: 'Slow-braised lamb shank with mash and vegetables' },
+  { src: '/images/grilled-fish.jpg', alt: 'Grilled baby kingklip with vegetable straws' },
+  { src: '/images/prawn-salad.jpg', alt: 'Prawn salad in a black bowl' },
+  { src: '/images/caesar-salad.jpg', alt: 'Cajun chicken Caesar salad' },
+  { src: '/images/dessert-tartlets.jpg', alt: 'Crumble tartlets with vanilla quenelle' },
+  { src: '/images/souffle-berries.jpg', alt: 'Soufflé with strawberries and icing sugar' },
+  { src: '/images/chocolate-dessert.jpg', alt: 'Chocolate dessert with edible nasturtium' },
+  { src: '/images/cocktails.jpg', alt: 'House cocktails behind the bar' },
+  { src: '/images/coffee-latte.jpg', alt: 'Latte art with gold-leaf candle' },
+  { src: '/images/cappuccino.jpg', alt: 'Cappuccino on marble with gold-leaf bowl' },
 ];
 
 export const TESTIMONIALS = [
