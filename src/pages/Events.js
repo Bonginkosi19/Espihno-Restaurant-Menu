@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ChevronRight, Check, ChevronDown } from 'lucide-react';
 import { EVENT_CATEGORIES, WHATSAPP } from '../data/menu';
 import { useCart } from '../context/CartContext';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 const inquire = (type) => {
   const message = `Hello Espinho! I'd like to inquire about ${type}. Please share availability and packages.`;
@@ -53,7 +54,7 @@ function EventSection({ event, index }) {
                 onClick={() => inquire(event.inquireType)}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:scale-105 hover:shadow-xl hover:shadow-amber-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-amber-300"
               >
-                Book this event <ChevronRight size={14} />
+                <WhatsAppIcon size={16} /> Book this event <ChevronRight size={14} />
               </button>
               <button
                 onClick={() => setExpandedGallery((v) => !v)}
@@ -164,7 +165,7 @@ export default function Events() {
               onClick={() => inquire('a private function')}
               className="inline-flex items-center gap-2 border border-amber-400/50 text-amber-400 hover:bg-amber-400 hover:text-black px-8 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold transition-all"
             >
-              Brief Us on WhatsApp <ChevronRight size={14} />
+              <WhatsAppIcon size={16} /> Brief Us on WhatsApp <ChevronRight size={14} />
             </button>
           </div>
         </div>

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { ShoppingBag, X, Phone, Plus, Minus, Trash2, ChevronRight } from 'lucide-react';
+import { ShoppingBag, X, Plus, Minus, Trash2, ChevronRight } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { WHATSAPP } from '../data/menu';
+import WhatsAppIcon from './WhatsAppIcon';
 
 /**
  * Slide-out cart drawer — premium, mobile-optimised, with quantity steppers
@@ -142,7 +143,7 @@ export default function CartModal() {
               onClick={placeOrder}
               className="w-full bg-gradient-to-r from-amber-600 to-amber-500 text-black px-7 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-amber-300"
             >
-              <Phone size={16} />
+              <WhatsAppIcon size={18} />
               Place Order via WhatsApp
             </button>
             <p className="text-gray-500 text-[10px] uppercase tracking-[0.25em] text-center mt-3">

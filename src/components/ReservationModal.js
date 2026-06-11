@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, X, Phone, CheckCircle2, ChevronRight, User, Mail, Users, MessageSquare, Clock } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { WHATSAPP, PHONE, PHONE_DISPLAY } from '../data/menu';
+import WhatsAppIcon from './WhatsAppIcon';
 
 const initial = { name: '', email: '', phone: '', date: '', time: '', guests: '', requests: '' };
 
@@ -144,7 +145,7 @@ export default function ReservationModal() {
                 type="submit"
                 className="w-full bg-gradient-to-r from-amber-600 to-amber-500 text-black px-7 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold hover:scale-[1.02] hover:shadow-xl hover:shadow-amber-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-amber-300 flex items-center justify-center gap-2"
               >
-                Confirm via WhatsApp <ChevronRight size={16} />
+                <WhatsAppIcon size={18} /> Confirm via WhatsApp <ChevronRight size={16} />
               </button>
 
               <div className="pt-3 text-center">

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Instagram, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Mail, Instagram, Clock } from 'lucide-react';
 import { ADDRESS_LINES, HOURS, PHONE, PHONE_DISPLAY, EMAIL, INSTAGRAM, WHATSAPP, INTERIORS } from '../data/menu';
 import { useCart } from '../context/CartContext';
 import InteriorImage from '../components/InteriorImage';
+import WhatsAppIcon from '../components/WhatsAppIcon';
 
 export default function Contact() {
   const { openReservation } = useCart();
@@ -119,7 +120,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-7 py-3.5 rounded-full text-xs uppercase tracking-[0.25em] font-bold hover:scale-[1.02] transition-all focus:outline-none focus:ring-2 focus:ring-amber-300"
                 >
-                  <Send size={14} />
+                  <WhatsAppIcon size={16} />
                   Send via WhatsApp
                 </button>
               </form>
