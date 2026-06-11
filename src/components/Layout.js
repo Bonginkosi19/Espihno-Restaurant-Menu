@@ -5,7 +5,6 @@ import Footer from './Footer';
 import Fab from './Fab';
 import ReservationModal from './ReservationModal';
 import CartModal from './CartModal';
-import ReserveTab from './ReserveTab';
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -28,7 +27,6 @@ export default function Layout() {
       </main>
       <Footer />
       <Fab />
-      <ReserveTab />
       <ReservationModal />
       <CartModal />
     </div>
