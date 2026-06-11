@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import MenuPage from './pages/Menu';
 import About from './pages/About';
 import Events from './pages/Events';
+import Bar from './pages/Bar';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
@@ -19,6 +20,7 @@ export default function App() {
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/about" element={<About />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/bar" element={<Bar />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>

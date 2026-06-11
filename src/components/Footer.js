@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Phone, Mail, Instagram } from 'lucide-react';
-import { ADDRESS_LINES, HOURS, PHONE, EMAIL, INSTAGRAM } from '../data/menu';
+import { ADDRESS_LINES, HOURS, PHONE, PHONE_DISPLAY, EMAIL, INSTAGRAM } from '../data/menu';
 
 export default function Footer() {
   return (
@@ -51,7 +51,7 @@ export default function Footer() {
             <ul className="text-gray-400 text-sm leading-relaxed space-y-2">
               <li>
                 <a href={`tel:${PHONE}`} className="flex items-center gap-2 hover:text-amber-400 transition-colors">
-                  <Phone size={14} /> {PHONE}
+                  <Phone size={14} /> {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
@@ -73,8 +73,9 @@ export default function Footer() {
           <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs uppercase tracking-[0.25em] text-gray-500">
             <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <Link to="/menu" className="hover:text-amber-400 transition-colors">Menu</Link>
-            <Link to="/about" className="hover:text-amber-400 transition-colors">About</Link>
+            <Link to="/bar" className="hover:text-amber-400 transition-colors">Bar</Link>
             <Link to="/events" className="hover:text-amber-400 transition-colors">Events</Link>
+            <Link to="/about" className="hover:text-amber-400 transition-colors">About</Link>
             <Link to="/contact" className="hover:text-amber-400 transition-colors">Contact</Link>
           </nav>
           <p className="text-gray-600 text-xs tracking-wide">© {new Date().getFullYear()} Espinho</p>

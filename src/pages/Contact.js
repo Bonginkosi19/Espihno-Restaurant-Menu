@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Instagram, Clock, Send } from 'lucide-react';
-import { ADDRESS_LINES, HOURS, PHONE, EMAIL, INSTAGRAM, WHATSAPP, INTERIORS } from '../data/menu';
+import { ADDRESS_LINES, HOURS, PHONE, PHONE_DISPLAY, EMAIL, INSTAGRAM, WHATSAPP, INTERIORS } from '../data/menu';
 import { useCart } from '../context/CartContext';
 import InteriorImage from '../components/InteriorImage';
 
@@ -56,7 +56,7 @@ export default function Contact() {
             <a href={`tel:${PHONE}`} className="group block bg-zinc-900/60 border border-zinc-800 hover:border-amber-400/40 rounded-2xl p-6 transition-all">
               <Phone className="text-amber-400 mb-4 group-hover:scale-110 transition-transform" size={26} />
               <h3 className="font-serif text-xl font-bold text-white mb-2">Call Us</h3>
-              <p className="text-gray-400 text-sm">{PHONE}</p>
+              <p className="text-gray-400 text-sm">{PHONE_DISPLAY}</p>
             </a>
 
             <a href={`mailto:${EMAIL}`} className="group block bg-zinc-900/60 border border-zinc-800 hover:border-amber-400/40 rounded-2xl p-6 transition-all">

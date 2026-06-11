@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu as MenuIcon, X } from 'lucide-react';
+import { Menu as MenuIcon, X, Phone } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { PHONE, PHONE_DISPLAY } from '../data/menu';
 
 // Routes whose page bodies start with a cream/light surface — Navbar inverts to keep contrast.
-// (The /menu page reverted to dark + gold to match the print menu aesthetic.)
 const LIGHT_ROUTES = [];
 
 const links = [
   { to: '/', label: 'Home', end: true },
   { to: '/menu', label: 'Menu' },
-  { to: '/about', label: 'About' },
+  { to: '/bar', label: 'Bar' },
   { to: '/events', label: 'Events' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -33,6 +34,11 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
   const navClass = ({ isActive }) =>
     `relative px-3 py-2 text-xs uppercase tracking-[0.25em] transition-colors focus:outline-none ${
       isActive
@@ -44,7 +50,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/95 backdrop-blur-xl shadow-xl shadow-amber-500/10 py-3'
+          ? 'bg-black/95 backdrop-blur-xl shadow-xl shadow-black/50 py-3'
           : isLight
             ? 'bg-[#f4efe6]/80 backdrop-blur-md py-5'
             : 'bg-black/30 backdrop-blur-md py-5'
@@ -91,6 +97,7 @@ export default function Navbar() {
         <button
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
           className={`md:hidden p-2 rounded-md focus:outline-none focus:ring-2 ${
             isLight
               ? 'text-[#16181c] hover:bg-[#16181c]/5 focus:ring-[#7a1e2b]/40'
@@ -101,32 +108,56 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile dropdown — solid charcoal sheet with strong shadow, gold border accent, generous spacing */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 top-0 bg-black/97 backdrop-blur-xl pt-24 px-6 z-30 animate-[fadeIn_0.2s_ease-out]">
-          <nav className="flex flex-col gap-1">
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.end}
-                onClick={() => setMobileOpen(false)}
-                className={({ isActive }) =>
-                  `py-4 border-b border-zinc-800 text-lg uppercase tracking-[0.25em] font-light ${
-                    isActive ? 'text-amber-400' : 'text-gray-300'
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-            ))}
+        <>
+          <div
+            aria-hidden="true"
+            onClick={() => setMobileOpen(false)}
+            className="md:hidden fixed inset-0 top-[68px] bg-black/60 backdrop-blur-sm z-30 animate-[fadeIn_0.2s_ease-out]"
+          />
+          <div
+            className="md:hidden fixed inset-x-3 top-[80px] z-40 rounded-2xl bg-[#0c0d10] border border-amber-400/30 shadow-2xl shadow-black/70 p-6 animate-[fadeIn_0.25s_ease-out] max-h-[calc(100vh-100px)] overflow-y-auto"
+            style={{ boxShadow: '0 24px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(200,162,76,0.15)' }}
+          >
+            <nav className="flex flex-col">
+              {links.map((l) => (
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  end={l.end}
+                  className={({ isActive }) =>
+                    `relative py-4 px-3 border-b border-zinc-800/80 text-base uppercase tracking-[0.25em] font-semibold transition-colors ${
+                      isActive ? 'text-amber-400' : 'text-white hover:text-amber-400'
+                    }`
+                  }
+                >
+                  {({ isActive }) => (
+                    <span className="flex items-center justify-between">
+                      <span>{l.label}</span>
+                      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />}
+                    </span>
+                  )}
+                </NavLink>
+              ))}
+            </nav>
+
+            <a
+              href={`tel:${PHONE}`}
+              className="mt-6 flex items-center justify-center gap-2 border border-amber-400/30 text-amber-400 px-6 py-3 rounded-full text-xs uppercase tracking-[0.25em] font-semibold hover:bg-amber-400/10 transition-colors"
+            >
+              <Phone size={14} />
+              {PHONE_DISPLAY}
+            </a>
+
             <button
               onClick={() => { setMobileOpen(false); openReservation(); }}
-              className="mt-8 bg-gradient-to-r from-amber-600 to-amber-500 text-black px-6 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold"
+              className="mt-3 w-full bg-gradient-to-r from-amber-600 to-amber-500 text-black px-6 py-4 rounded-full text-sm uppercase tracking-[0.25em] font-bold hover:scale-[1.02] transition-transform"
             >
               Reserve a Table
             </button>
-          </nav>
-        </div>
+          </div>
+        </>
       )}
     </header>
   );

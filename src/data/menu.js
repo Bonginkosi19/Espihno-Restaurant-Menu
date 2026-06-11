@@ -25,11 +25,137 @@ export const BRAND_PALETTE = [
   { name: 'Sage Velvet', hex: '#7E8C73', usage: 'Banquettes, soft tones' },
 ];
 
-export const PHONE = '+26876796708';
-export const WHATSAPP = '26876796708';
+export const PHONE = '+26878760543';
+export const PHONE_DISPLAY = '+268 7876 0543';
+export const WHATSAPP = '26878760543';
 export const EMAIL = 'info.espinho@swazi.net';
 export const INSTAGRAM = 'https://www.instagram.com/espinho_restaurant_bar/';
 export const ADDRESS_LINES = ['Plot 136/180, Flame Tree Park', 'Behind Lubombo Mall', 'Siteki, Eswatini'];
+
+// Event categories — each has a hero image, a description, and a gallery of
+// supporting shots from real Espinho functions. Categories are referenced by
+// their slug from /events#<slug>.
+export const EVENT_CATEGORIES = [
+  {
+    slug: 'date-nights',
+    label: 'Date Nights & Anniversaries',
+    eyebrow: 'A Reservation for Two',
+    title: 'An evening they\'ll talk about for years',
+    description:
+      'Candlelight at a brass-trimmed table, a hand-piped anniversary plate, a glass of red shared across velvet chairs. We hold a corner of the dining room just for you — quiet, attentive, and gently paced.',
+    hero: '/images/date-toast.jpg',
+    gallery: ['/images/date-couple-indoor.jpg', '/images/date-anniversary-cake.jpg', '/images/date-birthday.jpg', '/images/date-toast.jpg'],
+    perks: [
+      'Reserved table with candlelight setup',
+      'Optional signature cocktail welcome',
+      'Personalised anniversary or birthday plate',
+      'Discreet service paced to your evening',
+    ],
+    inquireType: 'a date night or anniversary',
+  },
+  {
+    slug: 'dinners',
+    label: 'Dinners',
+    eyebrow: 'The Tasting Table',
+    title: 'Fine dining built around the producer',
+    description:
+      'Multi-course tasting menus built by the chef around what came in that morning. Kalahari wet-aged steaks, fresh shellfish, and a wine list curated to the night.',
+    hero: '/images/fillet-redwine.jpg',
+    gallery: ['/images/fillet-redwine.jpg', '/images/grilled-fish.jpg', '/images/pasta-prawn.jpg', '/images/lamb-shank.jpg', '/images/souffle-berries.jpg', '/images/dessert-tartlets.jpg'],
+    perks: [
+      '3, 5, or 7-course chef tasting',
+      'Optional sommelier wine pairing',
+      'Seasonal seafood and aged Kalahari beef',
+      'Table reservation up to 30 days in advance',
+    ],
+    inquireType: 'a tasting dinner',
+  },
+  {
+    slug: 'end-of-year',
+    label: 'End-of-Year Parties',
+    eyebrow: 'Black Tie · Gold Lights',
+    title: 'The night your team has been waiting for',
+    description:
+      'Live entertainment, full-bar service, branded backdrops, and a kitchen that can cater 200+ guests. From All-Black Affairs to corporate galas — we run the night end to end.',
+    hero: '/images/eoy-stage-laser.jpg',
+    gallery: ['/images/eoy-all-black-1.jpg', '/images/eoy-stage-night.jpg', '/images/eoy-grindrod-1.jpg', '/images/eoy-grindrod-2.jpg', '/images/eoy-arrival-couple.jpg', '/images/eoy-stage-performance.jpg', '/images/eoy-corporate-couple.jpg', '/images/eoy-all-black-2.jpg'],
+    perks: [
+      'Stage, AV, and DJ booth on site',
+      'Branded backdrops and balloon installations',
+      'Capacity up to 250 guests indoor + outdoor',
+      'Full-bar service with signature cocktails',
+    ],
+    inquireType: 'an end-of-year function',
+  },
+  {
+    slug: 'team-building',
+    label: 'Team Building',
+    eyebrow: 'Off-Site Done Right',
+    title: 'A long lunch your team won\'t forget',
+    description:
+      'Pool table, lounge couches, beer tower service and a private menu. We host team off-sites with the structure of a board room and the looseness of a great Friday afternoon.',
+    hero: '/images/team-pool.jpg',
+    gallery: ['/images/team-bar-tables.jpg', '/images/team-pool.jpg', '/images/team-beer.jpg', '/images/outdoor-bar-seating.jpg'],
+    perks: [
+      'Pool table and lounge games available',
+      'Set group menus with beer towers',
+      'Private breakout space on request',
+      'Half-day or full-day packages',
+    ],
+    inquireType: 'a team-building day',
+  },
+  {
+    slug: 'catering',
+    label: 'Catering Services',
+    eyebrow: 'On-Site or At Yours',
+    title: 'Hospitality that travels',
+    description:
+      'Indoor and outdoor catering for weddings, conferences, family gatherings and corporate launches. Full buffet lines, plated service, dessert towers — and the team to run them.',
+    hero: '/images/catering-banquet-hall.jpg',
+    gallery: ['/images/catering-banquet-hall.jpg', '/images/catering-tent-1.jpg', '/images/catering-tent-2.jpg', '/images/catering-buffet-line.jpg', '/images/catering-buffet-alt.jpg', '/images/catering-dessert-tower.jpg', '/images/catering-salad-bowls.jpg', '/images/catering-salad-fresh.jpg', '/images/catering-team-blue.jpg', '/images/catering-traditional-dress.jpg'],
+    perks: [
+      'Buffet, plated, or family-style service',
+      'On-site or venue-of-choice delivery',
+      'Branded uniforms and waitstaff team',
+      'Dessert tower and bespoke menu add-ons',
+    ],
+    inquireType: 'a catering brief',
+  },
+];
+
+// Bar zones — the outdoor bar/lounge plus indoor whiskey-bar and pool-table room.
+export const BAR_ZONES = [
+  {
+    slug: 'outdoor-bar',
+    label: 'Outdoor Bar',
+    eyebrow: 'Under the Umbrellas',
+    title: 'Sundowners on the deck',
+    description:
+      'White couches under Stella Artois umbrellas, turf underfoot, a clear view of the Lubombo skyline. The outdoor bar is where the evening starts.',
+    hero: '/images/outdoor-bar-stella.jpg',
+    gallery: ['/images/outdoor-bar-stella.jpg', '/images/outdoor-bar-seating.jpg', '/images/bar-lounge-1.jpg', '/images/bar-lounge-2.jpg'],
+  },
+  {
+    slug: 'outdoor-dining',
+    label: 'Outdoor Dining',
+    eyebrow: 'Long Tables Under Linen',
+    title: 'Open-air feasting',
+    description:
+      'When the sun is right and the crowd is large, we host long-table dining under white linen tents on the turf. Family-friendly, photo-friendly, perfectly catered.',
+    hero: '/images/catering-tent-1.jpg',
+    gallery: ['/images/catering-tent-1.jpg', '/images/catering-tent-2.jpg', '/images/eoy-stage-night.jpg'],
+  },
+  {
+    slug: 'whiskey-bar',
+    label: 'Whiskey Bar',
+    eyebrow: 'Bottles That Matter',
+    title: 'Single malts on a marble counter',
+    description:
+      'A wall of premium pours behind the bar — Macallan, Glenfiddich, Hennessy, Chivas. By the tot or by the bottle, our bartenders pour with intention.',
+    hero: '/images/bar-whiskey.jpg',
+    gallery: ['/images/bar-whiskey.jpg', '/images/team-beer.jpg', '/images/team-bar-tables.jpg', '/images/team-pool.jpg'],
+  },
+];
 
 export const HOURS = [
   { label: 'Mon – Wed', value: '08:00 – 22:00' },
